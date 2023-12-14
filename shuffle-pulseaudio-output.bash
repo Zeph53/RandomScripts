@@ -7,10 +7,10 @@
 ACTIVEPROCID=$(xprop -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d ' ' -f 5) _NET_WM_PID | cut -d ' ' -f 3)
 # Get the active index ID
 ACTIVEINDEXID=$(pacmd list-sink-inputs | awk -v pid="$ACTIVEPROCID" '/index:/{idx=$2} $1=="application.process.id" && $3=="\""pid"\""{print idx}')
-# Get available sink IDs
-AVAILSINKIDS=$(pacmd list-cards | awk '/index:/{printf "%s ",$NF}')
 # Get sink in use by active window
 ACTIVESINKID=$(pacmd list-sink-inputs | awk -v active_idx="$ACTIVEINDEXID" '$1 == "index:" {idx = $2} $1 == "sink:" && idx == active_idx {printf "%s", $2}')
+# Get available sink IDs
+AVAILSINKIDS=$(pacmd list-cards | awk '/index:/{printf "%s ",$NF}')
 
 #echo "Active Process ID: $ACTIVEPROCID"
 #echo "Active Index ID: $ACTIVEINDEXID"
