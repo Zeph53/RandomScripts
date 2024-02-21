@@ -5,7 +5,7 @@
 ## Run command as a normal user instead of root, while still using root's files
 if [[ $@ ]]; then
     if [ "`id -u`" -eq 0 ]; then 
-        adduser --no-create-home --home /$USER --gecos --disabled-password --disabled-login "nudo"
+        adduser --no-create-home --home /$USER --gecos --disabled-password --disabled-login --ingroup "users" "nudo"
     else
         printf "Why bother running as a normal user when you are one?\n" 
     fi 

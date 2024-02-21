@@ -1,5 +1,32 @@
 #!/bin/bash
 
+#case "$ANSWER" in
+#    1)
+#        # Commands for FalloutNV
+#        ;;
+#    2)
+#        # Commands for GECK
+#        ;;
+#    3)
+#        # Commands for FNVEdit
+#        ;;
+#    4)
+#        # Commands for FNVEdit-Autoclean
+#        ;;
+#    5)
+#        # Commands for FNVEdit-LODGen
+#        ;;
+#    6)
+#        # Commands for NifSkope
+#        ;;
+#    7)
+#        # Commands for Generate-Prefix
+#        ;;
+#    *)
+#        echo "Invalid option. Please choose a valid number."
+#        ;;
+#esac
+
 export SCRIPTDIR="$(dirname "$(readlink -f "$0")")"
 
 MENU=("FalloutNV" "GECK" "FNVEdit" "FNVEdit-Autoclean" "FNVEdit-LODGen" "NifSkope" "Generate-Prefix") ;

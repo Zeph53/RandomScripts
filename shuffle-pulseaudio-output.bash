@@ -1,43 +1,47 @@
 #!/bin/bash
 
-#
-## A script to shuffle the current active window's audio output via pulseaudio.
-
 # Get the active process ID
-ACTIVEPROCID=$(xprop -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d ' ' -f 5) _NET_WM_PID | cut -d ' ' -f 3)
+ACTIVE_WINDOW_ID=$(xprop -root "_NET_ACTIVE_WINDOW" | awk '/_NET_ACTIVE_WINDOW/ {print $NF}')
+ACTIVE_PID=$(xprop -id "$ACTIVE_WINDOW_ID" "_NET_WM_PID" | awk '/_NET_WM_PID/ {print $NF}')
+
 # Get the active index ID
-ACTIVEINDEXID=$(pacmd list-sink-inputs | awk -v pid="$ACTIVEPROCID" '/index:/{idx=$2} $1=="application.process.id" && $3=="\""pid"\""{print idx}')
-# Get sink in use by active window
-ACTIVESINKID=$(pacmd list-sink-inputs | awk -v active_idx="$ACTIVEINDEXID" '$1 == "index:" {idx = $2} $1 == "sink:" && idx == active_idx {printf "%s", $2}')
-# Get available sink IDs
-AVAILSINKIDS=$(pacmd list-cards | awk '/index:/{printf "%s ",$NF}')
+active_index_id=$(pacmd list-sink-inputs | awk -v pid="$ACTIVE_PID" '
+    $1 == "index:" { idx = $2; app_id = 0 }
+    $1 == "application.process.id" && $3 == "\""pid"\"" {
+        print idx
+        exit
+    }
+')
 
-#echo "Active Process ID: $ACTIVEPROCID"
-#echo "Active Index ID: $ACTIVEINDEXID"
-#echo "Active Sink ID: $ACTIVESINKID"
-#echo "Available Sink IDs: $AVAILSINKIDS"
+# Get the active sink ID
+ACTIVE_SINK_ID=$(pacmd list-sink-inputs | awk -v active_idx="$active_index_id" '$1 == "index:" && $2 == active_idx {getline; print $NF}')
 
-# Find the index of the current sink ID in the available sinks array
-current_index=0
-for sinkid in $AVAILSINKIDS; do
-    if [ "$sinkid" == "$ACTIVESINKID" ]; then
-        break
-    fi
+# Get the available sink IDs
+AVAILABLE_SINKS=$(pacmd list-sinks | awk '/index:/{print $NF}')
+
+# Switch the current process to the next available sink
+if [ -n "$ACTIVE_SINK_ID" ]; then
+    avail_sink_ids=$AVAILABLE_SINKS
+    num_sinks=$(echo "$avail_sink_ids" | wc -w)
+
+    current_index=0
+    for sink_id in $avail_sink_ids; do
+        if [ "$sink_id" == "$ACTIVE_SINK_ID" ]; then
+            break
+        fi
+        ((current_index++))
+    done
+
     ((current_index++))
-done
+    next_index=$((current_index % num_sinks + 1))
+    next_sink_id=$(echo "$avail_sink_ids" | awk -v idx="$next_index" '{print $idx}')
 
-# Get the next available sink ID that is not in use by the active window
-while :; do
-    ((current_index++))
-    next_index=$((current_index % $(echo "$AVAILSINKIDS" | wc -w) + 1))
-    NEXTSINKID=$(echo "$AVAILSINKIDS" | awk -v idx="$next_index" '{print $idx}')
-
-    if [ "$NEXTSINKID" != "$ACTIVESINKID" ]; then
-        break
+    if [ "$next_sink_id" != "$ACTIVE_SINK_ID" ]; then
+        pacmd move-sink-input "$active_index_id" "$next_sink_id"
+        echo "Audio output for the active window switched to the next available sink."
+        exit 0
     fi
-done
+fi
 
-# Change the active sink to the next available sink ID
-pacmd move-sink-input $ACTIVEINDEXID $NEXTSINKID
-
-# Done
+echo "Invalid usage. Use '--help' for more information."
+exit 1
