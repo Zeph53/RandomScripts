@@ -1,0 +1,15 @@
+\Snowman
+
+mklink /D "C:\Users\Snowman\3D Objects" "Z:\Sandbox\3D Objects"
+mklink /D "C:\Users\Snowman\AppData" "Z:\Sandbox\AppData"
+mklink /D "C:\Users\Snowman\Contacts" "Z:\Sandbox\Contacts"
+mklink /D "C:\Users\Snowman\Desktop" "Z:\Sandbox\Desktop"
+mklink /D "C:\Users\Snowman\Documents" "Z:\Sandbox\Documents"
+mklink /D "C:\Users\Snowman\Downloads" "Z:\Sandbox\Downloads"
+mklink /D "C:\Users\Snowman\Favorites" "Z:\Sandbox\Favorites"
+mklink /D "C:\Users\Snowman\Links" "Z:\Sandbox\Links"
+mklink /D "C:\Users\Snowman\Music" "Z:\Sandbox\Music"
+mklink /D "C:\Users\Snowman\Pictures" "Z:\Sandbox\Pictures"
+mklink /D "C:\Users\Snowman\Saved Games" "Z:\Sandbox\Saved Games"
+mklink /D "C:\Users\Snowman\Searches" "Z:\Sandbox\Searches"
+mklink /D "C:\Users\Snowman\Videos" "Z:\Sandbox\Videos"
