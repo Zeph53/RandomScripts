@@ -1,65 +1,8 @@
-#!/bin/bash
+github forcing the use of 2fa now. i don't own a cellphone and i won't be buying one just to create free stuff.
+i won't be relying on third party password managers, or less-than-functional authentication apps either.
 
-# Set inactive duration (in seconds)
-inactive_duration=600  # 10 minutes
+it was an interesting run on gitHub for like 7 years. 
+not a single comment, reaction, issue report, star, feedback of any kind..
+still tried sending things out there..
 
-# Function to disconnect a specified Bluetooth device
-disconnect_device() {
-    local mac_address=$1
-    # Disconnect the device
-    echo -e "disconnect $mac_address\n" | bluetoothctl > /dev/null
-    # Log disconnection due to inactivity
-    echo "Device $mac_address disconnected due to inactivity."
-    # Terminate the background task associated with this device
-    kill "$2"
-    # Exit the loop and terminate the background task
-    exit
-}
-
-# Function to monitor a specific device for inactivity
-monitor_device() {
-    local mac_address=$1
-    local bg_task_id=$2
-
-    while true; do
-        # Check if the device is connected
-        connected=$(echo -e "info $mac_address\n" | bluetoothctl | grep "Connected: yes")
-
-        if [ -n "$connected" ]; then
-            # Wait for the inactive duration
-            sleep "$inactive_duration"
-            # Check if still connected after inactive duration
-            connected_after_sleep=$(echo -e "info $mac_address\n" | bluetoothctl | grep "Connected: yes")
-
-            if [ -n "$connected_after_sleep" ]; then
-                # Disconnect the device if still connected after inactivity
-                disconnect_device "$mac_address" "$bg_task_id"
-            fi
-        fi
-
-        # Wait for the next cycle for inactivity check
-        sleep 10
-    done
-}
-
-# Function to start monitoring for connected devices
-start_monitoring() {
-    while true; do
-        # Get a list of connected devices
-        connected_devices=$(echo -e "devices\n" | bluetoothctl | grep "Device" | awk '{print $2}')
-
-        # Monitor each device in the background
-        for device in $connected_devices; do
-            # Start monitoring each connected device in the background
-            monitor_device "$device" "$BASHPID" &
-            # Stagger the checks between devices
-            sleep 2
-        done
-
-        # Wait for the next cycle for device re-connection check
-        sleep 8
-    done
-}
-
-# Start the monitoring process
-start_monitoring
+if i can't access any of the stuff that i've made due to github's forcing of 2fa, then none of you can either.
