@@ -1,22 +1,8 @@
-#!/bin/bash
+github forcing the use of 2fa now. i don't own a cellphone and i won't be buying one just to create free stuff.
+i won't be relying on third party password managers, or less-than-functional authentication apps either.
 
-export PKGDIR="/media/Multimedia-A/Backups/Packages/Windows"
-export VC="$PGKDIR/VCRedist"
-export WINEPREFIX="/media/Multimedia-Z/Prefix/64-addon"
-export WINEARCH="win64"
+it was an interesting run on gitHub for like 7 years. 
+not a single comment, reaction, issue report, star, feedback of any kind..
+still tried sending things out there..
 
-rm -r -f "$WINEPREFIX" ;
-
-winecfg -v win10 ;
-winetricks --force --unattended fonts \
-dotnet48 vcrun2005 vcrun2008 vcrun2010 vcrun2012 vcrun2013 ; 
-
-winecfg -v win7 ; 
-wine "$VC/2005/vcredist_x64.exe /Q" ; 
-wine "$VC/2008/vcredist_x64.exe /q" ; 
-wine "$VC/2010/vcredist_x64.exe /q" ; 
-wine "$VC/2012/vcredist_x64.exe /quiet" ; 
-wine "$VC/2013/vcredist_x64.exe /quiet" ;
-
-winecfg -v win10 ; 
-winetricks --force --unattended d3dx9 directplay dxvk xinput ;
+if i can't access any of the stuff that i've made due to github's forcing of 2fa, then none of you can either.
