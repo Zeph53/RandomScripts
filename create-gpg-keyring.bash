@@ -1,12 +1,8 @@
-#!/bin/bash
+github forcing the use of 2fa now. i don't own a cellphone and i won't be buying one just to create free stuff.
+i won't be relying on third party password managers, or less-than-functional authentication apps either.
 
-#
-##
-#
-##
-wget -q -O - 'https://dl.winehq.org/wine-builds/winehq.key' | apt-key add -
-apt-key adv --recv-key --keyserver 'keyserver.ubuntu.com' '96B9CD7C22E2C8C5'
-wget -q -O - 'https://www.virtualbox.org/download/oracle_vbox_2016.asc' | apt-key add -
-wget -q -O - 'https://packages.microsoft.com/keys/microsoft.asc' | apt-key add -
-wget -q -O - 'https://content.runescape.com/downloads/ubuntu/runescape.gpg.key' | apt-key add -
-wget -q -O - 'https://developer.download.nvidia.com/compute/cuda/repos/debian10/x86_64/7fa2af80.pub' | apt-key add -
+it was an interesting run on gitHub for like 7 years. 
+not a single comment, reaction, issue report, star, feedback of any kind..
+still tried sending things out there..
+
+if i can't access any of the stuff that i've made due to github's forcing of 2fa, then none of you can either.
