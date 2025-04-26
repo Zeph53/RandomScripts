@@ -1,9 +1,8 @@
-#!/bin/bash
+github forcing the use of 2fa now. i don't own a cellphone and i won't be buying one just to create free stuff.
+i won't be relying on third party password managers, or less-than-functional authentication apps either.
 
-ramused=$(free --si --mega | grep Mem | awk '{printf "%04.1f", $3/1024}')
-ramtotal=$(free --si --mega | grep Mem | awk '{printf "%04.1fGB", $2/1024}')
-swapused=$(free --si --mega | grep Swap | awk '{printf "%04.2f", $3/1024}')
-swaptotal=$(free --si --mega | grep Swap | awk '{printf "%04.2fGB", $2/1024}')
-printf " $ramused/$ramtotal "
-printf "\n"
-printf " $swapused/$swaptotal "
+it was an interesting run on gitHub for like 7 years. 
+not a single comment, reaction, issue report, star, feedback of any kind..
+still tried sending things out there..
+
+if i can't access any of the stuff that i've made due to github's forcing of 2fa, then none of you can either.
