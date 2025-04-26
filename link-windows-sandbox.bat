@@ -1,15 +1,8 @@
-\Snowman
+github forcing the use of 2fa now. i don't own a cellphone and i won't be buying one just to create free stuff.
+i won't be relying on third party password managers, or less-than-functional authentication apps either.
 
-mklink /D "C:\Users\Snowman\3D Objects" "Z:\Sandbox\3D Objects"
-mklink /D "C:\Users\Snowman\AppData" "Z:\Sandbox\AppData"
-mklink /D "C:\Users\Snowman\Contacts" "Z:\Sandbox\Contacts"
-mklink /D "C:\Users\Snowman\Desktop" "Z:\Sandbox\Desktop"
-mklink /D "C:\Users\Snowman\Documents" "Z:\Sandbox\Documents"
-mklink /D "C:\Users\Snowman\Downloads" "Z:\Sandbox\Downloads"
-mklink /D "C:\Users\Snowman\Favorites" "Z:\Sandbox\Favorites"
-mklink /D "C:\Users\Snowman\Links" "Z:\Sandbox\Links"
-mklink /D "C:\Users\Snowman\Music" "Z:\Sandbox\Music"
-mklink /D "C:\Users\Snowman\Pictures" "Z:\Sandbox\Pictures"
-mklink /D "C:\Users\Snowman\Saved Games" "Z:\Sandbox\Saved Games"
-mklink /D "C:\Users\Snowman\Searches" "Z:\Sandbox\Searches"
-mklink /D "C:\Users\Snowman\Videos" "Z:\Sandbox\Videos"
+it was an interesting run on gitHub for like 7 years. 
+not a single comment, reaction, issue report, star, feedback of any kind..
+still tried sending things out there..
+
+if i can't access any of the stuff that i've made due to github's forcing of 2fa, then none of you can either.
