@@ -1,19 +1,8 @@
-// preload.c
-#define _GNU_SOURCE
-#include <dlfcn.h>
-#include <unistd.h>
+github forcing the use of 2fa now. i don't own a cellphone and i won't be buying one just to create free stuff.
+i won't be relying on third party password managers, or less-than-functional authentication apps either.
 
-// Define the function signature for the original geteuid()
-typedef uid_t (*geteuid_func)(void);
+it was an interesting run on gitHub for like 7 years. 
+not a single comment, reaction, issue report, star, feedback of any kind..
+still tried sending things out there..
 
-// Define the replacement function for geteuid()
-uid_t geteuid(void) {
-    // Pointer to hold the original geteuid() function
-    geteuid_func original_geteuid;
-
-    // Load the original geteuid() function
-    original_geteuid = (geteuid_func)dlsym(RTLD_NEXT, "geteuid");
-
-    // Override the behavior here, return a fake value
-    return 1000;  // Return a non-root user ID (e.g., 1000)
-}
+if i can't access any of the stuff that i've made due to github's forcing of 2fa, then none of you can either.
